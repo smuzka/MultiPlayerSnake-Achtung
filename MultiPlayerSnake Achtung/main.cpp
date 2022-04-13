@@ -1,46 +1,9 @@
-#include <SFML/Window.hpp>
+﻿#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
-
-#include <iostream>
-
+#include "Menu.h"
 
 
 
-
-class supertype {
-public:
-    int x;
-
-    supertype(int a) : x(a){}
-
-};
-
-class subtype : public supertype{
-public:
-    int y;
-
-    subtype(int a, int b) : supertype(a), y(b) {}
-
-};
-
-class parent {
-public:
-    void myfunc(subtype costam) {
-
-        std::cout << costam.x << costam.y << std::endl;
-    }
-};
-
-
-class child : public parent {
-public:
-    void myfunc(supertype innecostam) {
-        std::cout << "child" << std::endl;
-
-    }
-
-
-};
 
 
 int main()
@@ -48,12 +11,26 @@ int main()
 
 
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "GFK", sf::Style::Titlebar | sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Achtung", sf::Style::Titlebar | sf::Style::Close);
     sf::Event event;
+    
+    
+    window.setFramerateLimit(60);
+
+    Menu menu(window.getSize().x, window.getSize().y);
+
+
 
     while (window.isOpen())
     {
-        window.clear(sf::Color::White);
+        window.clear(sf::Color::Black);
+
+        menu.menuDraw(window, window.getSize().x, window.getSize().y);
+        
+
+
+
+
 
         while (window.pollEvent(event))
         {
