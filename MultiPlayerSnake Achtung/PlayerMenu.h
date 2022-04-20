@@ -11,29 +11,37 @@
 class PlayerMenu {
 private:
 
-	
-	
-
-
-
-	std::vector <Player> Players;
-
-
+	std::vector <Player> players;
 
 public:
 
 	PlayerMenu() {
-
-		
+		//createNewPlayer(sf::Color::Blue);
 	}
 
 
-	void createNewPlayer() {
-		Players.push_back(Player());
+    void createNewPlayer(sf::Color color);
+
+    void deletePlayer(Player player);
+
+	void drawPlayerMenu(sf::RenderWindow& window, float width, float height);
+
+	bool isPlayerInVector(sf::Color color) {
+		for (Player element : players) {
+			if (element.getColor() == color) {
+				return true;
+			}
+		}
+		return false;
 	}
 
+	int getIndex(std::vector<Player> vector, Player player);
 
-	void drawPlayerMenu(sf::RenderWindow& window, int width, int height);
-
+	int getIndexFromColor(sf::Color color);
 
 };
+
+
+
+
+
